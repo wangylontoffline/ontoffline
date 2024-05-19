@@ -4,23 +4,23 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ontoffline.supermall</groupId>
     <artifactId>supermall</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>yami-shop-admin</module>
-        <module>yami-shop-sys</module>
-        <module>yami-shop-common</module>
-        <module>yami-shop-api</module>
-        <module>yami-shop-bean</module>
-        <module>yami-shop-service</module>
-        <module>yami-shop-security</module>
-        <module>yami-shop-quartz</module>
-        <module>yami-shop-mp</module>
+        <module>ontoffline-supermall-admin</module>
+        <module>ontoffline-supermall-sys</module>
+        <module>ontoffline-supermall-common</module>
+        <module>ontoffline-supermall-api</module>
+        <module>ontoffline-supermall-bean</module>
+        <module>ontoffline-supermall-service</module>
+        <module>ontoffline-supermall-security</module>
+        <module>ontoffline-supermall-quartz</module>
+        <module>ontoffline-supermall-mp</module>
     </modules>
 
     <properties>
-        <yami.shop.version>0.0.1-SNAPSHOT</yami.shop.version>
+        <yami.shop.version>1.0.1-SNAPSHOT</yami.shop.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
