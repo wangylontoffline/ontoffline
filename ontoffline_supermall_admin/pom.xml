@@ -33,19 +33,19 @@
 	       <version>${poi.version}</version>
        </dependency>
         <dependency>
-            <groupId>com.yami.shop</groupId>
-            <artifactId>yami-shop-security</artifactId>
-            <version>${yami.shop.version}</version>
+            <groupId>com.ontoffline.supermall</groupId>
+            <artifactId>ontoffline_supermall_security</artifactId>
+            <version>${ontoffline.supermall.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.yami.shop</groupId>
-            <artifactId>yami-shop-quartz</artifactId>
-            <version>${yami.shop.version}</version>
+            <groupId>com.ontoffline.supermall</groupId>
+            <artifactId>ontoffline_supermall_quartz</artifactId>
+            <version>${ontoffline.supermall.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.yami.shop</groupId>
-            <artifactId>yami-shop-mp</artifactId>
-            <version>${yami.shop.version}</version>
+            <groupId>com.ontoffline.supermall</groupId>
+            <artifactId>ontoffline_supermall_mp</artifactId>
+            <version>${ontoffline.supermall.version}</version>
         </dependency>
     </dependencies>
 
