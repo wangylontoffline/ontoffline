@@ -8,19 +8,19 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ontoffline-supermall-admin</module>
-        <module>ontoffline-supermall-sys</module>
-        <module>ontoffline-supermall-common</module>
-        <module>ontoffline-supermall-api</module>
-        <module>ontoffline-supermall-bean</module>
-        <module>ontoffline-supermall-service</module>
-        <module>ontoffline-supermall-security</module>
-        <module>ontoffline-supermall-quartz</module>
-        <module>ontoffline-supermall-mp</module>
+        <module>ontoffline_supermall_admin</module>
+        <module>ontoffline_supermall_sys</module>
+        <module>ontoffline_supermall_common</module>
+        <module>ontoffline_supermall_api</module>
+        <module>ontoffline_supermall_bean</module>
+        <module>ontoffline_supermall_service</module>
+        <module>ontoffline_supermall_security</module>
+        <module>ontoffline_supermall_quartz</module>
+        <module>ontoffline_supermall_mp</module>
     </modules>
 
     <properties>
-        <yami.shop.version>1.0.1-SNAPSHOT</yami.shop.version>
+        <ontoffline.supermall.version>1.0.1-SNAPSHOT</ontoffline.supermall.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
