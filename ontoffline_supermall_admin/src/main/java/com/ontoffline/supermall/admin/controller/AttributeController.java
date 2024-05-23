@@ -14,7 +14,7 @@ import java.util.Objects;
 import javax.validation.Valid;
 
 import com.ontoffline.supermall.common.util.PageParam;
-import com.ontoffline.supermall.common.enums.YamiHttpStatus;
+import com.ontoffline.supermall.common.enums.OntofflineHttpStatus;
 
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ontoffline.supermall.bean.enums.ProdPropRule;
 import com.ontoffline.supermall.bean.model.ProdProp;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.SupermallBindException;
 import com.ontoffline.supermall.service.ProdPropService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
@@ -87,7 +87,7 @@ public class AttributeController {
 	public ResponseEntity<Void> update(@Valid ProdProp prodProp){
 		ProdProp dbProdProp = prodPropService.getById(prodProp.getPropId());
 		if (!Objects.equals(dbProdProp.getShopId(), SecurityUtils.getSysUser().getShopId())) {
-			throw new YamiShopBindException("没有权限获取该商品规格信息");
+			throw new SupermallBindException("没有权限获取该商品规格信息");
 		}
 		prodProp.setRule(ProdPropRule.ATTRIBUTE.value());
 		prodProp.setShopId(SecurityUtils.getSysUser().getShopId());
