@@ -20,7 +20,11 @@
 
     <Loggers>
         <Logger name="org.mybatis" level="debug"/>
+<<<<<<< HEAD
         <Logger name="com.ontoffline.supermall" level="debug"/>
+=======
+        <Logger name="com.yami.shop" level="debug"/>
+>>>>>>> branch 'main' of https://github.com/wangylontoffline/ontoffline.git
         <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
         <Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
         <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
