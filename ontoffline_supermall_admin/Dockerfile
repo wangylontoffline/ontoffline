@@ -5,9 +5,9 @@ MAINTAINER long82(rock.abstract@hotmail.com)
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN mkdir -p /opt/projects/mall4j
+RUN mkdir -p /home/oto/plateform
 
-WORKDIR /opt/projects/mall4j
+WORKDIR /home/oto/plateform
 
 ADD ./target/ontoffline_supermall_admin-1.0.1-SNAPSHOT.jar ./
 
