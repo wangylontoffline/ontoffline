@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ontoffline.supermall</groupId>
     <artifactId>supermall</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -20,7 +20,7 @@
     </modules>
 
     <properties>
-        <ontoffline.supermall.version>1.0.1-SNAPSHOT</ontoffline.supermall.version>
+        <ontoffline.supermall.version>1.0.1</ontoffline.supermall.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
