@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>supermall</artifactId>
+		<groupId>com.ontoffline.supermall</groupId>
+		<version>1.0.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>ontoffline_supermall_api</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ontoffline.supermall</groupId>
+			<artifactId>ontoffline_supermall_service</artifactId>
+			<version>${ontoffline.supermall.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ontoffline.supermall</groupId>
+			<artifactId>ontoffline_supermall_security</artifactId>
+			<version>${ontoffline.supermall.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ontoffline.supermall</groupId>
+			<artifactId>ontoffline_supermall_mp</artifactId>
+			<version>${ontoffline.supermall.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.joinfaces</groupId>
+            <artifactId>undertow-spring-boot-starter</artifactId>
+            <version>4.1.1</version>
+         </dependency>
+	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profiles.active>dev</profiles.active>
+				<maven.test.skip>true</maven.test.skip>
+				<!-- activation><activeByDefault>true</activeByDefault></activation-->
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<profiles.active>prod</profiles.active>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+	</profiles>
+	
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>application-dev.yml</include>
+					<include>log4j2_dev.xml</include>
+					<include>application-prod.yml</include>
+					<include>log4j2_prod.xml</include>
+					<include>application.yml</include>
+					<include>api.properties</include>
+					<include>redisson.yml</include>
+					<include>www_ontoffline_com.jks</include>
+					<include>banner.txt</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>www_ontoffline_com.jks</exclude>
+				</excludes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<groupId>com.ontoffline.supermall</groupId>
+	<version>1.0.1</version>
+</project>

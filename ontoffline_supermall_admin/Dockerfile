@@ -9,8 +9,8 @@ RUN mkdir -p /home/oto/plateform
 
 WORKDIR /home/oto/plateform
 
-ADD ./target/ontoffline_supermall_admin-1.0.1-SNAPSHOT.jar ./
+ADD ./target/ontoffline_supermall_admin-1.0.1.jar ./
 
 EXPOSE 8088
 
-CMD java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms512m -Xmx512m -Xmn128m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC ontoffline_supermall_admin-1.0.1-SNAPSHOT.jar
+CMD java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms512m -Xmx512m -Xmn128m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC ontoffline_supermall_admin-1.0.1.jar

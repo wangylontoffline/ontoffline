@@ -1,0 +1,31 @@
+server:
+  http2: enable
+  host: 127.0.0.1
+  port: 443
+  http-port: 80
+  servlet:
+        contextPath: /
+  ssl:
+      key-store: classpath:www_ontoffline_com.jks
+      key-store-password: kssomv55
+      key-password: kssomv55
+  undertow:
+      worker-threads: 200
+      buffer-size: 512
+      io-threads: 10
+spring:
+  datasource:
+    url: jdbc:mysql://47.97.111.246:3306/ontoffline_supermall?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: root
+    password: OtoDb2018#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 0
+      maximum-pool-size: 20
+      connection-test-query: select 1
+  redis:
+    redisson:
+      config: classpath:redisson-docker.yml
+logging:
+  config: classpath:log4j2_prod.xml

@@ -5,8 +5,8 @@
 
     <parent>
         <groupId>com.ontoffline.supermall</groupId>
-        <artifactId>ontoffline_supermall_admin</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <artifactId>supermall</artifactId>
+        <version>1.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
