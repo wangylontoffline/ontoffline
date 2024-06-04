@@ -10,12 +10,14 @@
 
 package com.ontoffline.supermall.quartz.service;
 
+
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ontoffline.supermall.quartz.model.ScheduleJobLog;
 
 /**
- * @author lgh
+ * @author wangylontoffline
  */
+
 public interface ScheduleJobLogService extends IService<ScheduleJobLog>{
 
 }
