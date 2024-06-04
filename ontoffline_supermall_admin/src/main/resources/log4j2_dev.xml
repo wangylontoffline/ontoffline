@@ -23,7 +23,7 @@
 <<<<<<< HEAD
         <Logger name="com.ontoffline.supermall" level="debug"/>
 =======
-        <Logger name="com.yami.shop" level="debug"/>
+        <Logger name="com.ontoffline.supermall" level="debug"/>
 >>>>>>> branch 'main' of https://github.com/wangylontoffline/ontoffline.git
         <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
         <Logger name="org.apache.catalina.util.LifecycleBase" level="error" />

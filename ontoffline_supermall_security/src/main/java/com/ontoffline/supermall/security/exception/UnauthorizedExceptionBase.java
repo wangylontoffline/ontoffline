@@ -8,10 +8,13 @@
 
 package com.ontoffline.supermall.security.exception;
 
+
 import org.springframework.http.HttpStatus;
 
 /**
+ * @author wangylontoffline
  */
+
 public class UnauthorizedExceptionBase extends BaseOntofflineAuth2Exception {
 
 	public UnauthorizedExceptionBase(String msg) {

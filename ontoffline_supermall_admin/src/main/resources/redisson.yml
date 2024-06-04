@@ -27,5 +27,5 @@ threads: 0
 # 这个线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量。
 nettyThreads: 0
 codec:
-  class: com.yami.shop.common.serializer.redisson.FstCodec
+  class: com.ontoffline.supermall.common.serializer.redisson.FstCodec
 transportMode: NIO

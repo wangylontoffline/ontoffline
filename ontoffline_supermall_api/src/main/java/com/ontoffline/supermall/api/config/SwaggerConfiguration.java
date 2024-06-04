@@ -42,7 +42,7 @@ public class SwaggerConfiguration {
 //	     .apiInfo(apiInfo())
 //		 .groupName("基础版")
 //	     .select()
-//	     .apis(RequestHandlerSelectors.basePackage("com.yami.shop.api"))
+//	     .apis(RequestHandlerSelectors.basePackage("com.ontoffline.supermall.api"))
 //	     .paths(PathSelectors.any())
 //	     .build();
 //	 }
