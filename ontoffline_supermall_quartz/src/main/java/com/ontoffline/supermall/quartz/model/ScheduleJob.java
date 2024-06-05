@@ -22,7 +22,7 @@ import java.util.Date;
  */
 
 @Data
-@TableName("oto_schedule_job")
+@TableName("qrtz_schedule_job")
 public class ScheduleJob  implements Serializable {
     /**
 	 * 

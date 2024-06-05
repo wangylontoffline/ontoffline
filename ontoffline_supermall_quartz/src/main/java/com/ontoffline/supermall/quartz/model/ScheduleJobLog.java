@@ -20,7 +20,7 @@ import java.util.Date;
  */
 
 @Data
-@TableName("oto_schedule_job_log")
+@TableName("qrtz_schedule_job_log")
 public class ScheduleJobLog {
     /**
      * 任务日志id
