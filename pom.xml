@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ontoffline.supermall</groupId>
-    <artifactId>supermall</artifactId>
+    <artifactId>ontoffline_supermall</artifactId>
     <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>ontoffline_supermall_admin</module>
-        <module>ontoffline_supermall_sys</module>
+        <module>ontoffline_supermall_system</module>
         <module>ontoffline_supermall_common</module>
         <module>ontoffline_supermall_api</module>
         <module>ontoffline_supermall_bean</module>
