@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HttpContextUtils {
 
 	public static HttpServletRequest getHttpServletRequest() {
-		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		return (HttpServletRequest) ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	}
 
 	public static String getDomain(){

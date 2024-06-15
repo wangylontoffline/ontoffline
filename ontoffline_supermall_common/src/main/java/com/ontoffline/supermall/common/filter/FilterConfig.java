@@ -13,6 +13,10 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import jakarta.servlet.Filter;
+
+import java.util.EnumSet;
+
 import javax.servlet.DispatcherType;
 
 /**
@@ -23,16 +27,18 @@ import javax.servlet.DispatcherType;
 public class FilterConfig {
 
     @Bean
-    public FilterRegistrationBean<XssFilter> filterRegistration() {
-        FilterRegistrationBean<XssFilter> registration = new FilterRegistrationBean<>();
+    public FilterRegistrationBean filterRegistration() {
+        FilterRegistrationBean registration = new FilterRegistrationBean<>();
         //添加过滤器
-        registration.setFilter(new XssFilter());
+        registration.setFilter((Filter) new XssFilter());
         //设置过滤路径，/*所有路径
         registration.addUrlPatterns("/*");
         registration.setName("xssFilter");
         //设置优先级
         registration.setOrder(Integer.MAX_VALUE);
-        registration.setDispatcherTypes(DispatcherType.REQUEST);
+        registration.setDispatcherTypes(EnumSet.of(DispatcherType.REQUEST));
         return registration;
     }
+    
+
 }

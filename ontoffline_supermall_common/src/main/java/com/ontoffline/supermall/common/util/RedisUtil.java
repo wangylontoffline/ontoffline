@@ -76,7 +76,7 @@ public class RedisUtil {
             if(key.length==1){
                 redisTemplate.delete(key[0]);
             }else{
-                redisTemplate.delete(CollectionUtils.arrayToList(key));
+                redisTemplate.delete(CollectionUtils.arrayToList(key).toString());
             }
         }
     }
