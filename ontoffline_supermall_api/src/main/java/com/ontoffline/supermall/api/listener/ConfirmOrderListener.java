@@ -19,7 +19,7 @@ import com.ontoffline.supermall.bean.model.Sku;
 import com.ontoffline.supermall.bean.model.UserAddr;
 import com.ontoffline.supermall.bean.order.ConfirmOrderOrder;
 import com.ontoffline.supermall.bean.order.ShopCartEventOrder;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.Arith;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.ProductService;
@@ -82,10 +82,10 @@ public class ConfirmOrderListener {
             // 获取sku信息
             Sku sku = skuService.getSkuBySkuId(shopCartItem.getSkuId());
             if (product == null || sku == null) {
-                throw new YamiShopBindException("购物车包含无法识别的商品");
+                throw new OntofflineSupermallBindException("购物车包含无法识别的商品");
             }
             if (product.getStatus() != 1 || sku.getStatus() != 1) {
-                throw new YamiShopBindException("商品[" + sku.getProdName() + "]已下架");
+                throw new OntofflineSupermallBindException("商品[" + sku.getProdName() + "]已下架");
             }
 
             totalCount = shopCartItem.getProdCount() + totalCount;

@@ -15,7 +15,7 @@ import com.ontoffline.supermall.bean.app.dto.ProductDto;
 import com.ontoffline.supermall.bean.app.dto.UserCollectionDto;
 import com.ontoffline.supermall.bean.model.Product;
 import com.ontoffline.supermall.bean.model.UserCollection;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.PageParam;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.ProductService;
@@ -55,7 +55,7 @@ public class UserCollectionController {
     public ResponseEntity<Boolean> isCollection(Long prodId) {
         if (productService.count(new LambdaQueryWrapper<Product>()
                 .eq(Product::getProdId, prodId)) < 1) {
-            throw new YamiShopBindException("该商品不存在");
+            throw new OntofflineSupermallBindException("该商品不存在");
         }
         return ResponseEntity.ok(userCollectionService.count(new LambdaQueryWrapper<UserCollection>()
                 .eq(UserCollection::getProdId, prodId)
@@ -67,7 +67,7 @@ public class UserCollectionController {
     @ApiImplicitParam(name = "prodId", value = "商品id", required = true, dataType = "Long")
     public ResponseEntity<Void> addOrCancel(@RequestBody Long prodId) {
         if (Objects.isNull(productService.getProductByProdId(prodId))) {
-            throw new YamiShopBindException("该商品不存在");
+            throw new OntofflineSupermallBindException("该商品不存在");
         }
         String userId = SecurityUtils.getUser().getUserId();
         if (userCollectionService.count(new LambdaQueryWrapper<UserCollection>()

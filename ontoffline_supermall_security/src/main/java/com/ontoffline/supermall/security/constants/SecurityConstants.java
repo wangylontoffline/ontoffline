@@ -16,7 +16,7 @@ public interface SecurityConstants {
     /**
      * 前缀
      */
-    String YAMI_PREFIX = "oto_";
+    String Ontoffline_PREFIX = "oto_";
 
     /**
      * oauth 相关前缀

@@ -17,8 +17,8 @@ import com.ontoffline.supermall.security.exception.UsernameNotFoundExceptionBase
 import com.ontoffline.supermall.security.exception.WxErrorExceptionBase;
 import com.ontoffline.supermall.security.model.AppConnect;
 import com.ontoffline.supermall.security.provider.AbstractUserDetailsAuthenticationProvider;
-import com.ontoffline.supermall.security.service.YamiUser;
-import com.ontoffline.supermall.security.service.YamiUserDetailsService;
+import com.ontoffline.supermall.security.service.OntofflineUser;
+import com.ontoffline.supermall.security.service.OntofflineUserDetailsService;
 import com.ontoffline.supermall.security.token.MyAuthenticationToken;
 import lombok.AllArgsConstructor;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -39,7 +39,7 @@ public class MiniAppAuthenticationProvider extends AbstractUserDetailsAuthentica
 
 //    private final YamiUserDetailsService yamiUserDetailsService;
 	@Autowired
-	private YamiUserDetailsService yamiUserDetailsService;
+	private OntofflineUserDetailsService yamiUserDetailsService;
 
 //    private final WxMaService wxMaService;
 	@Autowired
@@ -54,10 +54,10 @@ public class MiniAppAuthenticationProvider extends AbstractUserDetailsAuthentica
 
     @Override
     protected UserDetails retrieveUser(String code, Authentication authentication) throws AuthenticationException {
-        YamiUser loadedUser = null;
+        OntofflineUser loadedUser = null;
         // 如果使用debugger 模式，则返回debugger的用户
         if (BooleanUtil.isTrue(((MyAuthenticationToken)authentication).getDebugger())) {
-            loadedUser = new YamiUser("1" , "debuggerOpenId1" ,  this.getAppInfo().value(), true);
+            loadedUser = new OntofflineUser("1" , "debuggerOpenId1" ,  this.getAppInfo().value(), true);
             loadedUser.setDebugger(true);
             return loadedUser;
         }

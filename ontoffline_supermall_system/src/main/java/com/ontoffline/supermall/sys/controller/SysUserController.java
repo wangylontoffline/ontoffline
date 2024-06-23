@@ -12,8 +12,6 @@ package com.ontoffline.supermall.sys.controller;
 import java.util.List;
 import java.util.Objects;
 
-import javax.validation.Valid;
-
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ontoffline.supermall.common.annotation.SysLog;
@@ -42,6 +40,7 @@ import com.ontoffline.supermall.common.exception.OntofflineSupermallBindExceptio
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.Valid;
 
 /**
  * @author wangylontoffline

@@ -19,7 +19,7 @@ import com.ontoffline.supermall.bean.enums.OrderStatus;
 import com.ontoffline.supermall.bean.event.SubmitOrderEvent;
 import com.ontoffline.supermall.bean.model.*;
 import com.ontoffline.supermall.bean.order.SubmitOrderOrder;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.Arith;
 import com.ontoffline.supermall.dao.*;
 import com.ontoffline.supermall.security.util.SecurityUtils;
@@ -88,7 +88,7 @@ public class SubmitOrderListener {
         // 把订单地址保存到数据库
         UserAddrOrder userAddrOrder = mapperFacade.map(mergerOrder.getUserAddr(), UserAddrOrder.class);
         if (userAddrOrder == null) {
-            throw new YamiShopBindException("请填写收货地址");
+            throw new OntofflineSupermallBindException("请填写收货地址");
         }
         userAddrOrder.setUserId(userId);
         userAddrOrder.setCreateTime(now);
@@ -204,7 +204,7 @@ public class SubmitOrderListener {
 
             if (skuMapper.updateStocks(sku) == 0) {
                 skuService.removeSkuCacheBySkuId(key, sku.getProdId());
-                throw new YamiShopBindException("商品：[" + sku.getProdName() + "]库存不足");
+                throw new OntofflineSupermallBindException("商品：[" + sku.getProdName() + "]库存不足");
             }
         });
 
@@ -213,7 +213,7 @@ public class SubmitOrderListener {
 
             if (productMapper.updateStocks(prod) == 0) {
                 productService.removeProductCacheByProdId(prodId);
-                throw new YamiShopBindException("商品：[" + prod.getProdName() + "]库存不足");
+                throw new OntofflineSupermallBindException("商品：[" + prod.getProdName() + "]库存不足");
             }
         });
 
@@ -223,11 +223,11 @@ public class SubmitOrderListener {
     private Product checkAndGetProd(Long prodId, ShopCartItemDto shopCartItem, Map<Long, Product> prodStocksMap) {
         Product product = productService.getProductByProdId(prodId);
         if (product == null) {
-            throw new YamiShopBindException("购物车包含无法识别的商品");
+            throw new OntofflineSupermallBindException("购物车包含无法识别的商品");
         }
 
         if (product.getStatus() != 1) {
-            throw new YamiShopBindException("商品[" + product.getProdName() + "]已下架");
+            throw new OntofflineSupermallBindException("商品[" + product.getProdName() + "]已下架");
         }
 
         // 商品需要改变的库存
@@ -248,7 +248,7 @@ public class SubmitOrderListener {
 
         // -1为无限库存
         if (product.getTotalStocks() != -1 && mapProduct.getTotalStocks() > product.getTotalStocks()) {
-            throw new YamiShopBindException("商品：[" + product.getProdName() + "]库存不足");
+            throw new OntofflineSupermallBindException("商品：[" + product.getProdName() + "]库存不足");
         }
 
         return product;
@@ -259,15 +259,15 @@ public class SubmitOrderListener {
         // 获取sku信息
         Sku sku = skuService.getSkuBySkuId(skuId);
         if (sku == null) {
-            throw new YamiShopBindException("购物车包含无法识别的商品");
+            throw new OntofflineSupermallBindException("购物车包含无法识别的商品");
         }
 
         if (sku.getStatus() != 1) {
-            throw new YamiShopBindException("商品[" + sku.getProdName() + "]已下架");
+            throw new OntofflineSupermallBindException("商品[" + sku.getProdName() + "]已下架");
         }
         // -1为无限库存
         if (sku.getStocks() != -1 && shopCartItem.getProdCount() > sku.getStocks()) {
-            throw new YamiShopBindException("商品：[" + sku.getProdName() + "]库存不足");
+            throw new OntofflineSupermallBindException("商品：[" + sku.getProdName() + "]库存不足");
         }
 
         if (sku.getStocks() != -1) {

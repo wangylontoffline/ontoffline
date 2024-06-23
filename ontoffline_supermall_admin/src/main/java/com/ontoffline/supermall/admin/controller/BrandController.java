@@ -13,7 +13,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ontoffline.supermall.bean.model.Brand;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.PageParam;
 import com.ontoffline.supermall.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ public class BrandController {
     public ResponseEntity<Void> save(@Valid Brand brand) {
         Brand dbBrand = brandService.getByBrandName(brand.getBrandName());
         if (dbBrand != null) {
-            throw new SupermallBindException("该品牌名称已存在");
+            throw new OntofflineSupermallBindException("该品牌名称已存在");
         }
         brandService.save(brand);
         return ResponseEntity.ok().build();
@@ -80,7 +80,7 @@ public class BrandController {
     public ResponseEntity<Void> update(@Valid Brand brand) {
         Brand dbBrand = brandService.getByBrandName(brand.getBrandName());
         if (dbBrand != null && !Objects.equals(dbBrand.getBrandId(), brand.getBrandId())) {
-            throw new SupermallBindException("该品牌名称已存在");
+            throw new OntofflineSupermallBindException("该品牌名称已存在");
         }
         brandService.updateById(brand);
         return ResponseEntity.ok().build();

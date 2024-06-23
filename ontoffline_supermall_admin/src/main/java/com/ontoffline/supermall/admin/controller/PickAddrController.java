@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.ontoffline.supermall.common.enums.OntofflineHttpStatus;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -90,7 +90,7 @@ public class PickAddrController {
 	public ResponseEntity<Void> update(@Valid @RequestBody PickAddr pickAddr){
 		PickAddr dbPickAddr = pickAddrService.getById(pickAddr.getAddrId());
 		if (!Objects.equals(dbPickAddr.getShopId(),pickAddr.getShopId())) {
-			throw new SupermallBindException(OntofflineHttpStatus.UNAUTHORIZED);
+			throw new OntofflineSupermallBindException(OntofflineHttpStatus.UNAUTHORIZED);
 		}
 		pickAddrService.updateById(pickAddr);
 		return ResponseEntity.ok().build();

@@ -15,7 +15,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,7 +163,7 @@ public class AddrController {
         String userId = SecurityUtils.getUser().getUserId();
         UserAddr userAddr = userAddrService.getUserAddrByUserId(addrId, userId);
         if (userAddr == null) {
-            throw new YamiShopBindException("该地址已被删除");
+            throw new OntofflineSupermallBindException("该地址已被删除");
         }
         return ResponseEntity.ok(mapperFacade.map(userAddr, UserAddrDto.class));
     }

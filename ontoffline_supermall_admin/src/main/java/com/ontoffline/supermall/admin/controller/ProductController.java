@@ -18,7 +18,7 @@ import com.ontoffline.supermall.bean.model.Product;
 import com.ontoffline.supermall.bean.model.Sku;
 import com.ontoffline.supermall.bean.param.ProductParam;
 import com.ontoffline.supermall.common.enums.OntofflineHttpStatus;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.Json;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.BasketService;
@@ -83,7 +83,7 @@ public class ProductController {
     public ResponseEntity<Product> info(@PathVariable("prodId") Long prodId) {
         Product prod = productService.getProductByProdId(prodId);
         if (!Objects.equals(prod.getShopId(), SecurityUtils.getSysUser().getShopId())) {
-            throw new SupermallBindException("没有权限获取该商品规格信息");
+            throw new OntofflineSupermallBindException("没有权限获取该商品规格信息");
         }
         List<Sku> skuList = skuService.listByProdId(prodId);
         prod.setSkuList(skuList);
@@ -159,7 +159,7 @@ public class ProductController {
     public ResponseEntity<Void> delete(@PathVariable("prodId") Long prodId) {
         Product dbProduct = productService.getProductByProdId(prodId);
         if (!Objects.equals(dbProduct.getShopId(), SecurityUtils.getSysUser().getShopId())) {
-            throw new SupermallBindException("无法获取非本店铺商品信息");
+            throw new OntofflineSupermallBindException("无法获取非本店铺商品信息");
         }
         List<Sku> dbSkus = skuService.listByProdId(dbProduct.getProdId());
         // 删除商品
@@ -204,14 +204,14 @@ public class ProductController {
 
     private void checkParam(ProductParam productParam) {
         if (CollectionUtil.isEmpty(productParam.getTagList())) {
-            throw new SupermallBindException("请选择产品分组");
+            throw new OntofflineSupermallBindException("请选择产品分组");
         }
 
         Product.DeliveryModeVO deliveryMode = productParam.getDeliveryModeVo();
         boolean hasDeliverMode = deliveryMode != null
                 && (deliveryMode.getHasShopDelivery() || deliveryMode.getHasUserPickUp());
         if (!hasDeliverMode) {
-            throw new SupermallBindException("请选择配送方式");
+            throw new OntofflineSupermallBindException("请选择配送方式");
         }
         List<Sku> skuList = productParam.getSkuList();
         boolean isAllUnUse = true;

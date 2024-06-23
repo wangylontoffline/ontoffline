@@ -18,7 +18,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontoffline.supermall.bean.param.OrderParam;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.*;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -94,7 +94,7 @@ public class OrderController {
         Long shopId = SecurityUtils.getSysUser().getShopId();
         Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (!Objects.equal(shopId, order.getShopId())) {
-            throw new SupermallBindException("您没有权限获取该订单信息");
+            throw new OntofflineSupermallBindException("您没有权限获取该订单信息");
         }
         List<OrderItem> orderItems = orderItemService.getOrderItemsByOrderNumber(orderNumber);
         order.setOrderItems(orderItems);
@@ -112,7 +112,7 @@ public class OrderController {
         Long shopId = SecurityUtils.getSysUser().getShopId();
         Order order = orderService.getOrderByOrderNumber(deliveryOrderParam.getOrderNumber());
         if (!Objects.equal(shopId, order.getShopId())) {
-            throw new SupermallBindException("您没有权限修改该订单信息");
+            throw new OntofflineSupermallBindException("您没有权限修改该订单信息");
         }
 
         Order orderParam = new Order();

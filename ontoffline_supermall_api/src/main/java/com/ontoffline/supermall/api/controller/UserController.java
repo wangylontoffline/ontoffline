@@ -12,7 +12,7 @@ package com.ontoffline.supermall.api.controller;
 import cn.hutool.core.util.StrUtil;
 import com.ontoffline.supermall.common.util.CacheManagerUtil;
 import com.ontoffline.supermall.security.enums.App;
-import com.ontoffline.supermall.security.service.YamiUser;
+import com.ontoffline.supermall.security.service.OntofflineUser;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

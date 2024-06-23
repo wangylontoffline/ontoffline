@@ -29,7 +29,7 @@ import com.ontoffline.supermall.bean.pay.PayInfoDto;
 import com.ontoffline.supermall.bean.pay.PayRefundDto;
 import com.ontoffline.supermall.common.util.Arith;
 import com.ontoffline.supermall.common.util.IPHelper;
-import com.ontoffline.supermall.security.service.YamiUser;
+import com.ontoffline.supermall.security.service.OntofflineUser;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.PayService;
 
@@ -63,7 +63,7 @@ public class PayController {
     @ApiOperation(value = "根据订单号进行支付", notes = "根据订单号进行支付")
     @SneakyThrows
     public ResponseEntity<WxPayMpOrderResult> pay(@RequestBody PayParam payParam) throws WxPayException {
-        YamiUser user = SecurityUtils.getUser();
+    	OntofflineUser user = SecurityUtils.getUser();
         String userId = user.getUserId();
         String openId = user.getBizUserId();
 
@@ -90,7 +90,7 @@ public class PayController {
     @ApiOperation(value = "根据订单号进行支付退款", notes = "根据订单号进行支付退款")
     @SneakyThrows
     public ResponseEntity<WxPayRefundResult> refund(@RequestBody PayParam payParam) throws WxPayException {
-        YamiUser user = SecurityUtils.getUser();
+    	OntofflineUser user = SecurityUtils.getUser();
         String userId = user.getUserId();
         String openId = user.getBizUserId();
 

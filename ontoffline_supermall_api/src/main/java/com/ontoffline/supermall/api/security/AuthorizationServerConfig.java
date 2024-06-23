@@ -10,10 +10,10 @@ package com.ontoffline.supermall.api.security;
 
 
 import com.ontoffline.supermall.security.constants.SecurityConstants;
-import com.ontoffline.supermall.security.service.YamiClientDetailsService;
-import com.ontoffline.supermall.security.service.YamiUser;
-import com.ontoffline.supermall.security.service.YamiUserDetailsService;
-import com.ontoffline.supermall.security.util.YamiTokenServices;
+import com.ontoffline.supermall.security.service.OntofflineClientDetailsService;
+import com.ontoffline.supermall.security.service.OntofflineUser;
+import com.ontoffline.supermall.security.service.OntofflineUserDetailsService;
+import com.ontoffline.supermall.security.util.OntofflineTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +53,7 @@ import java.util.Map;
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    private YamiUserDetailsService yamiUserDetailsService;
+    private OntofflineUserDetailsService yamiUserDetailsService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -69,14 +69,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public TokenStore tokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        tokenStore.setPrefix(SecurityConstants.YAMI_PREFIX + SecurityConstants.OAUTH_PREFIX);
+        tokenStore.setPrefix(SecurityConstants.Ontoffline_PREFIX + SecurityConstants.OAUTH_PREFIX);
         return tokenStore;
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 使用JdbcClientDetailsService客户端详情服务
-        YamiClientDetailsService clientDetailsService = new YamiClientDetailsService(dataSource);
+        OntofflineClientDetailsService clientDetailsService = new OntofflineClientDetailsService(dataSource);
         clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
         clientDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
         clients.withClientDetails(clientDetailsService);
@@ -114,7 +114,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
             Map<String, Object> additionalInfo = new HashMap<>(8);
-            YamiUser yamiUser = (YamiUser) authentication.getUserAuthentication().getPrincipal();
+            OntofflineUser yamiUser = (OntofflineUser) authentication.getUserAuthentication().getPrincipal();
             additionalInfo.put("userId", yamiUser.getUserId());
             additionalInfo.put("nickName",yamiUser.getName());
             additionalInfo.put("pic",yamiUser.getPic());
@@ -127,7 +127,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     @Lazy
     public AuthorizationServerTokenServices yamiTokenServices() {
-        YamiTokenServices tokenServices = new YamiTokenServices();
+        OntofflineTokenServices tokenServices = new OntofflineTokenServices();
         tokenServices.setTokenStore(tokenStore());
         tokenServices.setSupportRefreshToken(true);//支持刷新token
         tokenServices.setReuseRefreshToken(true);
@@ -137,7 +137,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return tokenServices;
     }
 
-    private void addUserDetailsService(YamiTokenServices tokenServices) {
+    private void addUserDetailsService(OntofflineTokenServices tokenServices) {
         PreAuthenticatedAuthenticationProvider provider = new PreAuthenticatedAuthenticationProvider();
         provider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper<>(
                 yamiUserDetailsService));

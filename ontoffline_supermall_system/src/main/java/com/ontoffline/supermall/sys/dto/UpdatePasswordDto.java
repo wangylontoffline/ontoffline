@@ -11,10 +11,9 @@ package com.ontoffline.supermall.sys.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 /**
  * @author wangylontoffline

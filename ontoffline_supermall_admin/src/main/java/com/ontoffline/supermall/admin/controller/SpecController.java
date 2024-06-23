@@ -34,7 +34,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ontoffline.supermall.bean.enums.ProdPropRule;
 import com.ontoffline.supermall.bean.model.ProdProp;
 import com.ontoffline.supermall.bean.model.ProdPropValue;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.service.ProdPropService;
 import com.ontoffline.supermall.service.ProdPropValueService;
 
@@ -104,7 +104,7 @@ public class SpecController {
     public ResponseEntity<Void> update(@Valid @RequestBody ProdProp prodProp) {
         ProdProp dbProdProp = prodPropService.getById(prodProp.getPropId());
         if (!Objects.equals(dbProdProp.getShopId(), SecurityUtils.getSysUser().getShopId())) {
-            throw new SupermallBindException("没有权限获取该商品规格信息");
+            throw new OntofflineSupermallBindException("没有权限获取该商品规格信息");
         }
         prodProp.setRule(ProdPropRule.SPEC.value());
         prodProp.setShopId(SecurityUtils.getSysUser().getShopId());

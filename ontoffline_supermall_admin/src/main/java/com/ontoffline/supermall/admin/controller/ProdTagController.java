@@ -16,7 +16,7 @@ import com.ontoffline.supermall.bean.model.ProdTagReference;
 import com.ontoffline.supermall.common.util.PageParam;
 import com.ontoffline.supermall.bean.model.ProdTag;
 import com.ontoffline.supermall.common.annotation.SysLog;
-import com.ontoffline.supermall.common.exception.SupermallBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.security.util.SecurityUtils;
 import com.ontoffline.supermall.service.ProdTagReferenceService;
 import com.ontoffline.supermall.service.ProdTagService;
@@ -120,14 +120,14 @@ public class ProdTagController {
     public ResponseEntity<Boolean> removeById(@PathVariable Long id) {
         ProdTag prodTag = prodTagService.getById(id);
         if (prodTag.getIsDefault() != 0) {
-            throw new SupermallBindException("默认标签不能删除");
+            throw new OntofflineSupermallBindException("默认标签不能删除");
         }
         // 校验分组是否已经使用过
         int count = prodTagReferenceService.count(new LambdaUpdateWrapper<ProdTagReference>()
                 .eq(ProdTagReference::getStatus, 1)
                 .eq(ProdTagReference::getTagId, id));
         if (count > 0) {
-            throw new SupermallBindException("该分组已被商品使用，无法进行删除操作");
+            throw new OntofflineSupermallBindException("该分组已被商品使用，无法进行删除操作");
         }
         prodTagService.removeProdTag();
         return ResponseEntity.ok(prodTagService.removeById(id));

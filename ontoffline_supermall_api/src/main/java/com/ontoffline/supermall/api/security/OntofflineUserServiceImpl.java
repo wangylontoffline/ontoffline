@@ -20,8 +20,8 @@ import com.ontoffline.supermall.security.dao.AppConnectMapper;
 import com.ontoffline.supermall.security.enums.App;
 import com.ontoffline.supermall.security.exception.UsernameNotFoundExceptionBase;
 import com.ontoffline.supermall.security.model.AppConnect;
-import com.ontoffline.supermall.security.service.YamiUser;
-import com.ontoffline.supermall.security.service.YamiUserDetailsService;
+import com.ontoffline.supermall.security.service.OntofflineUser;
+import com.ontoffline.supermall.security.service.OntofflineUserDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +39,7 @@ import java.util.*;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class OntofflineUserServiceImpl implements YamiUserDetailsService {
+public class OntofflineUserServiceImpl implements OntofflineUserDetailsService {
 
 	private UserMapper userMapper;
 
@@ -50,7 +50,7 @@ public class OntofflineUserServiceImpl implements YamiUserDetailsService {
 
 	@Override
 	@SneakyThrows
-	public YamiUser loadUserByUsername(String username) {
+	public OntofflineUser loadUserByUsername(String username) {
 		if (StrUtil.isBlank(username) || !username.contains(StrUtil.COLON) ) {
 			throw new UsernameNotFoundExceptionBase("无法获取用户信息");
 		}
@@ -69,7 +69,7 @@ public class OntofflineUserServiceImpl implements YamiUserDetailsService {
 	 * @throws UsernameNotFoundExceptionBase
 	 */
 	@Override
-	public YamiUser loadUserByAppIdAndBizUserId(App app, String bizUserId) {
+	public OntofflineUser loadUserByAppIdAndBizUserId(App app, String bizUserId) {
 
 		String cacheKey = app.value() + StrUtil.COLON + bizUserId;
 
@@ -78,7 +78,7 @@ public class OntofflineUserServiceImpl implements YamiUserDetailsService {
 			throw new UsernameNotFoundExceptionBase("无法获取用户信息");
 		}
 		String name = StrUtil.isBlank(user.getRealName()) ? user.getNickName() : user.getRealName();
-		YamiUser yamiUser = new YamiUser(user.getUserId(), bizUserId, app.value(), user.getStatus() == 1);
+		OntofflineUser yamiUser = new OntofflineUser(user.getUserId(), bizUserId, app.value(), user.getStatus() == 1);
 		yamiUser.setName(name);
 		yamiUser.setPic(user.getPic());
 

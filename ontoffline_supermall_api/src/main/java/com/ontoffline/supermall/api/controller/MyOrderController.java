@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.ontoffline.supermall.common.exception.YamiShopBindException;
+import com.ontoffline.supermall.common.exception.OntofflineSupermallBindException;
 import com.ontoffline.supermall.common.util.PageParam;
 import com.ontoffline.supermall.bean.app.dto.*;
 import com.ontoffline.supermall.dao.OrderMapper;
@@ -142,7 +142,7 @@ public class MyOrderController {
         String userId = SecurityUtils.getUser().getUserId();
         Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (!Objects.equals(order.getUserId(), userId)) {
-            throw new YamiShopBindException("你没有权限获取该订单信息");
+            throw new OntofflineSupermallBindException("你没有权限获取该订单信息");
         }
         List<OrderItem> orderItems = orderItemService.getOrderItemsByOrderNumber(orderNumber);
         order.setOrderItems(orderItems);
@@ -167,7 +167,7 @@ public class MyOrderController {
         String userId = SecurityUtils.getUser().getUserId();
         Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (!Objects.equals(order.getUserId(), userId)) {
-            throw new YamiShopBindException("你没有权限获取该订单信息");
+            throw new OntofflineSupermallBindException("你没有权限获取该订单信息");
         }
         List<OrderItem> orderItems = orderItemService.getOrderItemsByOrderNumber(orderNumber);
         order.setOrderItems(orderItems);
@@ -192,10 +192,10 @@ public class MyOrderController {
 
         Order order = orderService.getOrderByOrderNumber(orderNumber);
         if (order == null) {
-            throw new YamiShopBindException("该订单不存在");
+            throw new OntofflineSupermallBindException("该订单不存在");
         }
         if (!Objects.equals(order.getUserId(), userId)) {
-            throw new YamiShopBindException("你没有权限获取该订单信息");
+            throw new OntofflineSupermallBindException("你没有权限获取该订单信息");
         }
 
         // 删除订单

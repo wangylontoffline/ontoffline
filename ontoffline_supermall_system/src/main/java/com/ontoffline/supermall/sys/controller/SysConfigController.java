@@ -9,8 +9,6 @@
 package com.ontoffline.supermall.sys.controller;
 
 
-import javax.validation.Valid;
-
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.ontoffline.supermall.sys.model.SysConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,7 @@ import com.ontoffline.supermall.common.annotation.SysLog;
 import com.ontoffline.supermall.sys.service.SysConfigService;
 
 import cn.hutool.core.util.StrUtil;
+import jakarta.validation.Valid;
 
 /**
  * @author wangylontoffline

@@ -12,10 +12,11 @@ package com.ontoffline.supermall.sys.model;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
